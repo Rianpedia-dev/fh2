@@ -260,14 +260,22 @@ export async function getFullSiteConfig(): Promise<SiteConfig> {
 // ============================================================
 export async function getDashboardCounts() {
     try {
-        const [announcementsList, lecturersList, staffList, organizationsList, galleryList, testimonialsList, partnersList] = await Promise.all([
-            db.select().from(schema.announcements),
-            db.select().from(schema.lecturers),
-            db.select().from(schema.staff),
-            db.select().from(schema.organizations),
-            db.select().from(schema.gallery),
-            db.select().from(schema.testimonials),
-            db.select().from(schema.partners),
+        const [
+            announcementsList,
+            lecturersList,
+            staffList,
+            organizationsList,
+            galleryList,
+            testimonialsList,
+            partnersList
+        ] = await Promise.all([
+            db.select().from(schema.announcements).catch(() => []),
+            db.select().from(schema.lecturers).catch(() => []),
+            db.select().from(schema.staff).catch(() => []),
+            db.select().from(schema.organizations).catch(() => []),
+            db.select().from(schema.gallery).catch(() => []),
+            db.select().from(schema.testimonials).catch(() => []),
+            db.select().from(schema.partners).catch(() => []),
         ]);
 
         return {
@@ -280,6 +288,7 @@ export async function getDashboardCounts() {
             partners: partnersList.length,
         };
     } catch (e) {
+        console.error("Dashboard counts error:", e);
         return {
             announcements: 0,
             lecturers: 0,

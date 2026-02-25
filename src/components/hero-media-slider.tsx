@@ -13,7 +13,7 @@ interface HeroMediaSliderProps {
 
 export function HeroMediaSlider({ images, universityName }: HeroMediaSliderProps) {
     const [emblaRef] = useEmblaCarousel({ loop: true }, [
-        Autoplay({ delay: 5000, stopOnInteraction: false }),
+        Autoplay({ delay: 3500, stopOnInteraction: false }),
     ]);
 
     if (images.length === 0) {

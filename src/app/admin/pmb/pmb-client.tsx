@@ -74,11 +74,6 @@ export default function PmbClient({
         try {
             let imageUrl = mEdit?.image || "";
             if (mFile) {
-                if (mFile.size > 1 * 1024 * 1024) {
-                    toast.error("Ukuran foto maksimal 1MB");
-                    setMUploading(false);
-                    return;
-                }
                 const uploadFormData = new FormData();
                 uploadFormData.append("file", mFile);
                 uploadFormData.append("folder", "pmb");
