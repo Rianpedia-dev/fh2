@@ -159,7 +159,7 @@ export default async function Home() {
                   </Button>
                   <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-10 h-12 font-bold group shadow-2xl hover:scale-105 transition-all duration-300 bg-brand-red text-white hover:bg-red-700">
                     <Link href="/pmb">
-                      Pendaftaran
+                      Info PMB
                       <ChevronRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
