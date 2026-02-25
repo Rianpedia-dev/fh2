@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   generateBuildId: async () => "fhunpal-build",
   experimental: {
     serverActions: {
-      bodySizeLimit: "4mb",
+      bodySizeLimit: "10mb",
     },
   },
   eslint: {

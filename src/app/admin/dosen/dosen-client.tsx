@@ -37,11 +37,6 @@ export default function DosenClient({ data }: { data: Lecturer[] }) {
             let imageUrl = editing?.imageUrl || "";
 
             if (file) {
-                if (file.size > 1 * 1024 * 1024) {
-                    toast.error("Ukuran foto maksimal 1MB");
-                    setUploading(false);
-                    return;
-                }
                 const uploadFormData = new FormData();
                 uploadFormData.append("file", file);
                 uploadFormData.append("folder", "dosen");
@@ -67,8 +62,8 @@ export default function DosenClient({ data }: { data: Lecturer[] }) {
             setOpen(false);
             setEditing(null);
             setFile(null);
-        } catch (e) {
-            toast.error("Gagal menyimpan data dosen");
+        } catch (e: any) {
+            toast.error(e.message || "Gagal menyimpan data dosen");
         } finally {
             setUploading(false);
         }

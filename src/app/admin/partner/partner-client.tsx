@@ -48,8 +48,8 @@ export default function PartnerClient({ data }: { data: Partner[] }) {
             setOpen(false);
             setEditing(null);
             setFile(null);
-        } catch (e) {
-            toast.error("Gagal menyimpan partner");
+        } catch (e: any) {
+            toast.error(e.message || "Gagal menyimpan partner");
         } finally {
             setUploading(false);
         }

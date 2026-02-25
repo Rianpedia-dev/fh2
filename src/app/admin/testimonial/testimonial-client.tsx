@@ -28,11 +28,6 @@ export default function TestimonialClient({ data }: { data: Testimonial[] }) {
             let imageUrl = editing?.image || "";
 
             if (file) {
-                if (file.size > 500 * 1024) {
-                    toast.error("Ukuran foto maksimal 500KB");
-                    setUploading(false);
-                    return;
-                }
                 const uploadFormData = new FormData();
                 uploadFormData.append("file", file);
                 uploadFormData.append("folder", "testimonial");
@@ -57,8 +52,8 @@ export default function TestimonialClient({ data }: { data: Testimonial[] }) {
             setOpen(false);
             setEditing(null);
             setFile(null);
-        } catch (e) {
-            toast.error("Gagal menyimpan testimonial");
+        } catch (e: any) {
+            toast.error(e.message || "Gagal menyimpan testimonial");
         } finally {
             setUploading(false);
         }

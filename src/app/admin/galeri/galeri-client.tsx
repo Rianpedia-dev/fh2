@@ -43,11 +43,6 @@ export default function GaleriClient({ data }: { data: GalleryItem[] }) {
 
             if (mediaType === 'image') {
                 if (file) {
-                    if (file.size > 3 * 1024 * 1024) {
-                        toast.error("Ukuran gambar maksimal 3MB");
-                        setUploading(false);
-                        return;
-                    }
                     const uploadFormData = new FormData();
                     uploadFormData.append("file", file);
                     uploadFormData.append("folder", "galeri");
@@ -98,8 +93,8 @@ export default function GaleriClient({ data }: { data: GalleryItem[] }) {
             setFile(null);
             setThumbFile(null);
             setMediaType("image");
-        } catch (e) {
-            toast.error("Gagal menyimpan galeri");
+        } catch (e: any) {
+            toast.error(e.message || "Gagal menyimpan galeri");
         } finally {
             setUploading(false);
         }

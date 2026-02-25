@@ -39,11 +39,6 @@ export default function BeritaClient({ data }: { data: Announcement[] }) {
             let imageUrl = editing?.imageUrl || "";
 
             if (file) {
-                if (file.size > 2 * 1024 * 1024) {
-                    toast.error("Ukuran gambar maksimal 2MB");
-                    setUploading(false);
-                    return;
-                }
                 const uploadFormData = new FormData();
                 uploadFormData.append("file", file);
                 uploadFormData.append("folder", "news");
@@ -70,8 +65,8 @@ export default function BeritaClient({ data }: { data: Announcement[] }) {
             setOpen(false);
             setEditing(null);
             setFile(null);
-        } catch (e) {
-            toast.error("Gagal menyimpan berita");
+        } catch (e: any) {
+            toast.error(e.message || "Gagal menyimpan berita");
         } finally {
             setUploading(false);
         }

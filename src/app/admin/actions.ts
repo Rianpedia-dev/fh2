@@ -4,14 +4,13 @@ import { db } from "@/db";
 import * as schema from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { saveFile, deleteFile } from "@/lib/upload-utils";
+import { saveFile, deleteFile, validateAndUploadImage } from "@/lib/upload-utils";
 import { createSuperAdmin } from "@/lib/admin-init";
 
 export async function uploadImageAction(formData: FormData) {
     const file = formData.get("file") as File;
     const folder = formData.get("folder") as string || "";
-    if (!file) throw new Error("No file provided");
-    return await saveFile(file, folder);
+    return await validateAndUploadImage(file, folder);
 }
 
 // ============================================================

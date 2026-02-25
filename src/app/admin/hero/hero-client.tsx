@@ -53,8 +53,8 @@ export default function HeroClient({ data }: { data: HeroSlide[] }) {
             setOpen(false);
             setEditing(null);
             setFile(null);
-        } catch (e) {
-            toast.error("Gagal menyimpan slide");
+        } catch (e: any) {
+            toast.error(e.message || "Gagal menyimpan slide");
         } finally {
             setUploading(false);
         }
