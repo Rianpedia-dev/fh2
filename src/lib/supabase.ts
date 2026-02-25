@@ -1,15 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!supabaseUrl || !supabaseServiceKey) {
-    // Jika tidak ada (biasanya saat running script standalone), coba load manual
-    const dotenv = require("dotenv");
-    const { join } = require("path");
-    dotenv.config({ path: join(process.cwd(), ".env.local") });
-}
-
+// Next.js handles .env.local automatically in production/dev.
+// Standalone scripts should load dotenv before importing this file if needed.
 const finalUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const finalServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
